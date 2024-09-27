@@ -1,0 +1,424 @@
+
+Code by @ Sonika Bhardwaj
+
+pip install kaggle
+     
+Requirement already satisfied: kaggle in /usr/local/lib/python3.10/dist-packages (1.6.14)
+Requirement already satisfied: six>=1.10 in /usr/local/lib/python3.10/dist-packages (from kaggle) (1.16.0)
+Requirement already satisfied: certifi>=2023.7.22 in /usr/local/lib/python3.10/dist-packages (from kaggle) (2024.2.2)
+Requirement already satisfied: python-dateutil in /usr/local/lib/python3.10/dist-packages (from kaggle) (2.8.2)
+Requirement already satisfied: requests in /usr/local/lib/python3.10/dist-packages (from kaggle) (2.31.0)
+Requirement already satisfied: tqdm in /usr/local/lib/python3.10/dist-packages (from kaggle) (4.66.4)
+Requirement already satisfied: python-slugify in /usr/local/lib/python3.10/dist-packages (from kaggle) (8.0.4)
+Requirement already satisfied: urllib3 in /usr/local/lib/python3.10/dist-packages (from kaggle) (2.0.7)
+Requirement already satisfied: bleach in /usr/local/lib/python3.10/dist-packages (from kaggle) (6.1.0)
+Requirement already satisfied: webencodings in /usr/local/lib/python3.10/dist-packages (from bleach->kaggle) (0.5.1)
+Requirement already satisfied: text-unidecode>=1.3 in /usr/local/lib/python3.10/dist-packages (from python-slugify->kaggle) (1.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.10/dist-packages (from requests->kaggle) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.10/dist-packages (from requests->kaggle) (3.7)
+
+import subprocess
+
+# Command to download the dataset
+command = "kaggle datasets download -d vbookshelf/rice-leaf-diseases"
+
+# Execute the command
+subprocess.run(command, shell=True)
+     
+CompletedProcess(args='kaggle datasets download -d vbookshelf/rice-leaf-diseases', returncode=0)
+
+# unzipping the data
+!unzip /content/rice-leaf-diseases.zip -d /content/rice-leaf-diseases
+     
+Archive:  /content/rice-leaf-diseases.zip
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0365.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0366.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0367.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0370.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0372.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0373.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0374.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0375.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0376.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0377.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0378.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0379.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0380.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0381.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0382.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0383.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0384.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0385.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0386.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0388.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0389.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0390.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0392.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0393.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0395.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0396.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0397.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0398.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0399.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0400.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0401.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0402.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0403.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0404.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0405.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0406.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0700.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0701.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0702.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Bacterial leaf blight/DSC_0703.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0100.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0101.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0104.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0105.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0106.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0107.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0108.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0109.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0110.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0111.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0112.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0113.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0114.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0115.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0116.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0117.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0118.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0119.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0121.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0292.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0295.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0296.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0299.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0300.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0301.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0302.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0303.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0304.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0305.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0306.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0307.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0323.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0324.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0325.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0329.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0332.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0333.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0337.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0391.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0394.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0293.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0308.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0309.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0310.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0312.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0313.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0314.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0315.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0316.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0317.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0318.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0319.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0320.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0321.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0322.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0327.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0328.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0330.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0331.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0335.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0336.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0338.JPG  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0339.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0500.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0501.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0502.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0503.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0504.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0505.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0506.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0507.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0508.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0509.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0510.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0511.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0512.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0513.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0514.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0515.jpg  
+  inflating: /content/rice-leaf-diseases/rice_leaf_diseases/Leaf smut/DSC_0516.jpg  
+
+import matplotlib.pyplot as plt
+import numpy as np
+import PIL
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+from tensorflow.keras.models import Sequential
+     
+
+import pathlib
+# Path to the dataset in your Google Drive
+data_dir = 'rice-leaf-diseases/rice_leaf_diseases'
+     
+
+data_dir = pathlib.Path(data_dir)
+image_count = len(list(data_dir.glob('*/*.jpg')))
+print(image_count)
+     
+53
+
+Bacterial_leaf_blight= list(data_dir.glob('Bacterial leaf blight/*'))
+PIL.Image.open(str(Bacterial_leaf_blight[0]))
+     
+
+
+Brown_spot = list(data_dir.glob('Brown spot/*'))
+PIL.Image.open(str(Brown_spot[1]))
+     
+
+
+Leaf_smut = list(data_dir.glob('Leaf smut/*'))
+PIL.Image.open(str(Leaf_smut[2]))
+     
+
+
+batch_size = 16
+img_height = 224
+img_width = 224
+     
+
+train_ds = tf.keras.utils.image_dataset_from_directory(
+  data_dir,
+  validation_split=0.2,
+  subset="training",
+  seed=2,
+  image_size=(img_height, img_width),
+  batch_size=batch_size)
+     
+Found 120 files belonging to 3 classes.
+Using 96 files for training.
+
+val_ds = tf.keras.utils.image_dataset_from_directory(
+  data_dir,
+  validation_split=0.2,
+  subset="validation",
+  seed=2,
+  image_size=(img_height, img_width),
+  batch_size=batch_size)
+     
+Found 120 files belonging to 3 classes.
+Using 24 files for validation.
+
+class_names = train_ds.class_names
+print(class_names)
+     
+['Bacterial leaf blight', 'Brown spot', 'Leaf smut']
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 10))
+for images, labels in train_ds.take(1):
+  for i in range(9):
+    ax = plt.subplot(3, 3, i + 1)
+    plt.imshow(images[i].numpy().astype("uint8"))
+    plt.title(class_names[labels[i]])
+    plt.axis("off")
+     
+
+
+AUTOTUNE = tf.data.AUTOTUNE
+
+train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
+val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
+     
+
+normalization_layer = layers.Rescaling(1./255)
+     
+
+normalized_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
+image_batch, labels_batch = next(iter(normalized_ds))
+first_image = image_batch[0]
+# Notice the pixel values are now in `[0,1]`.
+print(np.min(first_image), np.max(first_image))
+     
+0.0 1.0
+
+data_augmentation = keras.Sequential([
+    layers.RandomFlip("horizontal",
+                       input_shape=(img_height,
+                                    img_width,
+                                    3)),
+    layers.RandomRotation(0.1, seed=2),
+    layers.RandomZoom(0.1, seed=2),
+    layers.RandomFlip(seed=2),
+    layers.RandomBrightness(0.2, seed=2),
+    layers.RandomContrast(0.3, seed=2),
+])
+     
+
+plt.figure(figsize=(10, 10))
+for images, _ in train_ds.take(1):
+  for i in range(9):
+    augmented_images = data_augmentation(images)
+    ax = plt.subplot(3, 3, i + 1)
+    plt.imshow(augmented_images[0].numpy().astype("uint8"))
+    plt.axis("off")
+     
+
+
+from tensorflow.keras import layers, models
+     
+
+from tensorflow.keras.applications import MobileNetV3Large
+num_classes = len(class_names)
+base_model = MobileNetV3Large(weights='imagenet', include_top=False, input_shape=(img_height, img_width, 3))
+base_model.trainable = False
+
+model = models.Sequential([
+    base_model,
+    layers.GlobalAveragePooling2D(),
+    layers.Dropout(0.5),
+    layers.Dense(128, activation='relu'),
+    layers.Dense(num_classes, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.summary()
+     
+Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/mobilenet_v3/weights_mobilenet_v3_large_224_1.0_float_no_top_v2.h5
+12683000/12683000 [==============================] - 2s 0us/step
+Model: "sequential_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ MobilenetV3large (Function  (None, 7, 7, 960)         2996352   
+ al)                                                             
+                                                                 
+ global_average_pooling2d (  (None, 960)               0         
+ GlobalAveragePooling2D)                                         
+                                                                 
+ dropout (Dropout)           (None, 960)               0         
+                                                                 
+ dense (Dense)               (None, 128)               123008    
+                                                                 
+ dense_1 (Dense)             (None, 3)                 387       
+                                                                 
+=================================================================
+Total params: 3119747 (11.90 MB)
+Trainable params: 123395 (482.01 KB)
+Non-trainable params: 2996352 (11.43 MB)
+_________________________________________________________________
+
+epochs=21
+history = model.fit(
+  train_ds,
+  validation_data=val_ds,
+  epochs=epochs
+)
+     
+Epoch 1/21
+6/6 [==============================] - 10s 459ms/step - loss: 1.3504 - accuracy: 0.3854 - val_loss: 0.5529 - val_accuracy: 0.7917
+Epoch 2/21
+6/6 [==============================] - 0s 34ms/step - loss: 0.8161 - accuracy: 0.5938 - val_loss: 0.3634 - val_accuracy: 0.8333
+Epoch 3/21
+6/6 [==============================] - 0s 34ms/step - loss: 0.5033 - accuracy: 0.7812 - val_loss: 0.1778 - val_accuracy: 0.9583
+Epoch 4/21
+6/6 [==============================] - 0s 28ms/step - loss: 0.4010 - accuracy: 0.8646 - val_loss: 0.1365 - val_accuracy: 0.9583
+Epoch 5/21
+6/6 [==============================] - 0s 28ms/step - loss: 0.2548 - accuracy: 0.9062 - val_loss: 0.1044 - val_accuracy: 1.0000
+Epoch 6/21
+6/6 [==============================] - 0s 29ms/step - loss: 0.2750 - accuracy: 0.8646 - val_loss: 0.0836 - val_accuracy: 1.0000
+Epoch 7/21
+6/6 [==============================] - 0s 30ms/step - loss: 0.1756 - accuracy: 0.9375 - val_loss: 0.0576 - val_accuracy: 1.0000
+Epoch 8/21
+6/6 [==============================] - 0s 28ms/step - loss: 0.1388 - accuracy: 0.9792 - val_loss: 0.0456 - val_accuracy: 1.0000
+Epoch 9/21
+6/6 [==============================] - 0s 27ms/step - loss: 0.1742 - accuracy: 0.9375 - val_loss: 0.0499 - val_accuracy: 1.0000
+Epoch 10/21
+6/6 [==============================] - 0s 39ms/step - loss: 0.1001 - accuracy: 0.9792 - val_loss: 0.0489 - val_accuracy: 1.0000
+Epoch 11/21
+6/6 [==============================] - 0s 40ms/step - loss: 0.1453 - accuracy: 0.9479 - val_loss: 0.0284 - val_accuracy: 1.0000
+Epoch 12/21
+6/6 [==============================] - 0s 37ms/step - loss: 0.1172 - accuracy: 0.9688 - val_loss: 0.0274 - val_accuracy: 1.0000
+Epoch 13/21
+6/6 [==============================] - 0s 38ms/step - loss: 0.1168 - accuracy: 0.9583 - val_loss: 0.0260 - val_accuracy: 1.0000
+Epoch 14/21
+6/6 [==============================] - 0s 31ms/step - loss: 0.0808 - accuracy: 0.9792 - val_loss: 0.0243 - val_accuracy: 1.0000
+Epoch 15/21
+6/6 [==============================] - 0s 39ms/step - loss: 0.0616 - accuracy: 0.9896 - val_loss: 0.0193 - val_accuracy: 1.0000
+Epoch 16/21
+6/6 [==============================] - 0s 38ms/step - loss: 0.0541 - accuracy: 0.9896 - val_loss: 0.0163 - val_accuracy: 1.0000
+Epoch 17/21
+6/6 [==============================] - 0s 27ms/step - loss: 0.0571 - accuracy: 0.9792 - val_loss: 0.0163 - val_accuracy: 1.0000
+Epoch 18/21
+6/6 [==============================] - 0s 27ms/step - loss: 0.0683 - accuracy: 0.9896 - val_loss: 0.0189 - val_accuracy: 1.0000
+Epoch 19/21
+6/6 [==============================] - 0s 35ms/step - loss: 0.0953 - accuracy: 0.9583 - val_loss: 0.0152 - val_accuracy: 1.0000
+Epoch 20/21
+6/6 [==============================] - 0s 29ms/step - loss: 0.0534 - accuracy: 0.9896 - val_loss: 0.0123 - val_accuracy: 1.0000
+Epoch 21/21
+6/6 [==============================] - 0s 27ms/step - loss: 0.0388 - accuracy: 1.0000 - val_loss: 0.0157 - val_accuracy: 1.0000
+
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
+
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs_range = range(epochs)
+
+plt.figure(figsize=(12, 8))
+plt.subplot(1, 2, 1)
+plt.plot(epochs_range, acc, label='Training Accuracy')
+plt.plot(epochs_range, val_acc, label='Validation Accuracy')
+plt.legend(loc='lower right')
+plt.title('Training and Validation Accuracy')
+
+plt.subplot(1, 2, 2)
+plt.plot(epochs_range, loss, label='Training Loss')
+plt.plot(epochs_range, val_loss, label='Validation Loss')
+plt.legend(loc='upper right')
+plt.title('Training and Validation Loss')
+plt.show()
+     
+
+
+# Path to the image in your Google Drive
+test_path = '/content/rice-leaf-diseases/rice_leaf_diseases/Brown spot/DSC_0104.jpg'
+
+# Load the image
+img = tf.keras.preprocessing.image.load_img(test_path, target_size=(img_height, img_width))
+img_array = tf.keras.preprocessing.image.img_to_array(img)
+
+img_array = tf.expand_dims(img_array, 0) # Create a batch
+
+# Print the image
+plt.imshow(img)
+plt.axis('off')  # Remove axes
+plt.show()
+
+# Make predictions
+predictions = model.predict(img_array)
+score = tf.nn.softmax(predictions[0])
+
+# Output the prediction result
+class_names = ['Bacterial leaf blight', 'Brown spot', 'Leaf smut']  # Define your class names
+print("This image most likely belongs to {} with a {:.2f} percent confidence.".format(class_names[np.argmax(score)], 100 * np.max(score)))
+     
+
+1/1 [==============================] - 2s 2s/step
+This image most likely belongs to Brown spot with a 57.53 percent confidence.
+
+# Save the model to HDF5 format
+model.save("/content/drive/MyDrive/ricediseasemodel.h5")
+     
+/usr/local/lib/python3.10/dist-packages/keras/src/engine/training.py:3103: UserWarning: You are saving your model as an HDF5 file via `model.save()`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')`.
+  saving_api.save_model(
